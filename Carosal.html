@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            outline: none;
+        }
+        .bnr{
+            width: 100%;
+            height: 100vh;
+            position: relative;
+           
+        }
+        .bnr img{
+            width: 100%;
+            height: 100%;
+        }
+        .bnrtxt{
+            position: absolute;
+            top:50%;
+            left: 50%;
+            width: 40%;
+            padding: 20px 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap:7px;
+            background: transparent;
+            transform: translate(-50%,-50%);
+        }
+        .bnrtxt button{
+            padding: 5px 20px;
+            background: transparent;
+        }
+        .bnr>button{
+            position: absolute;
+            padding: 5px;
+            font-size: 35px;
+            background-color: transparent;
+            color: crimson;
+            font-weight: bolder;
+            transform: translateY(-50%);
+        }
+        .lt{
+            top : 50%;
+            left: 10px;
+        }
+        .rt{
+            top: 50%;
+            right: 10px;
+        }
+        .dotcon{
+            width: 100%;
+            position: absolute;
+            bottom: 10px;
+            text-align: center;
+            font-size: 30px;
+            color: chocolate;
+        }
+        h1{
+            color: white;
+        }
+        p{
+            color: rgb(173, 237, 45);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 200%;
+        }
+        button{
+            color: azure;
+        }
+    </style>
+</head>
+<body>
+    <div class="bnr">
+        <img src="7.jpg"/>
+        <div class="bnrtxt">
+            <h1>Top 10 Most Beautiful Cities in the World
+            </h1>
+            <p>Welcome</p>
+            <button>Know More..</button>
+        </div>
+        <button class="lt" onclick="bkw()">&lt;</button>
+        <button class="rt" onclick="fwd()">&gt;</button>
+        <div class="dotcon">
+            <i class="fa-solid fa-circle" onclick="setimg(0)"></i>
+            <i class="fa-regular fa-circle" onclick="setimg(1)"></i>
+            <i class="fa-regular fa-circle" onclick="setimg(2)"></i>
+            <i class="fa-regular fa-circle" onclick="setimg(3)"></i>
+            <i class="fa-regular fa-circle" onclick="setimg(4)"></i>
+            <i class="fa-regular fa-circle" onclick="setimg(5)"></i>
+
+        </div>
+    </div>
+    <script>
+        let a=[{"img":"1.jpg","hd":"Venice in Italy","p": "The city is known for its stunning architecture and magnificent art. ",}, 
+        {"img":"2.jpg","hd":"Prague in Czech Republic.","p": "Prague is the capital and largest city of the Czech Republic and the historical capital of Bohemia. "},
+        {"img":"3.jpg","hd":"Paris in France.","p": "Paris is known as the City of Light because of its role in the arts and sciences, and its early street lighting. "},
+        {"img":"4.jpg","hd":"Kyoto in Japan.","p": "The City of a Thousand Temples isn't just a catchy nickname but a testament to the Kioto's temples, shrines, and soul, steeped in centuries of spiritual tradition."},
+        {"img":"5.jpg","hd":"Sydney in Australia","p": "Sydney is the capital city of the state of New South Wales and the most populous city in Australia."},
+        {"img":"6.jpg","hd":"Bangkok in Thailand","p": "Bangkok, officially known in Thai as Krung Thep Maha Nakhon and colloquially as Krung Thep, is the capital and most populous city of Thailand."}
+        ]
+        let imgr=document.querySelector(".bnr img")
+        let hr=document.querySelector(".bnrtxt h1")
+        let pr=document.querySelector(".bnrtxt p")
+        let dr=document.getElementsByTagName("i")
+        let i=-1
+        
+        let fwd=()=>{
+            if(i!=-1){
+                dr[i].className="fa-regular fa-circle"
+            }
+            i=(i+1)%a.length
+            imgr.src=a[i].img
+            hr.innerHTML=a[i].hd
+            pr.innerHTML=a[i].p
+            dr[i].className="fa-solid fa-circle"
+        }
+
+        let bkw=()=>{
+            if(i!=-1){
+                dr[i].className="fa-regular fa-circle"
+            }
+            i=i-1
+            if(i<0){
+                i=a.length-1
+            }
+            imgr.src=a[i].img
+            hr.innerHTML=a[i].hd
+            pr.innerHTML=a[i].p
+            dr[i].className="fa-solid fa-circle"
+        }
+
+        let setimg=(ind)=>{
+            if(i==-1){
+                i=0
+            }
+            dr[i].className="fa-regular fa-circle"
+            i=ind
+            imgr.src=a[i].img
+            hr.innerHTML=a[i].hd
+            pr.innerHTML=a[i].p
+            dr[i].className="fa-solid fa-circle"
+        }
+        setInterval(fwd,50000)
+    </script>
+</body>
+</html>
